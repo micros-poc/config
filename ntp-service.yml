@@ -4,7 +4,7 @@ server:
 ntp:
   server:
     url: ntp2.stratum2.ru
-    timeout: 2030
+    timeout: 2040
 
 eureka:
   client:
