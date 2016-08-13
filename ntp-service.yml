@@ -11,4 +11,4 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
       
-timezone: GMT+4
+timezone: GMT+5
