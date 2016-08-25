@@ -1,1 +1,1 @@
-val eq ${timeout}
+val eq ${timezone}
