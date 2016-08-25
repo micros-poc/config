@@ -1,0 +1,14 @@
+server:
+  port: 8881
+
+ntp:
+  server:
+    url: ntp1.sd4.hospira.corp
+    timeout: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+timezone: GMT+3
