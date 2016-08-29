@@ -4,7 +4,7 @@ server:
 ntp:
   server:
     url: ntp1.sd4.hospira.corp
-    timeout: 20
+    timeout: 2
 
 eureka:
   client:
