@@ -6,15 +6,11 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-feign:
-  hystrix:
-    enabled: false
-
 hystrix:
   commands:
     timeCommandCircuitBreaker:
       circuitBreakerEnabled: true
-      circuitBreakerSleepWindowInMilliseconds: 10000
+      circuitBreakerSleepWindowInMilliseconds: 30000
       circuitBreakerRequestVolumeThreshold: 3
       executionTimeoutEnabled: true
-      executionTimeoutInMilliseconds: 1500
+      executionTimeoutInMilliseconds: 2000
