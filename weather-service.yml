@@ -1,0 +1,27 @@
+server:
+  port: 8887
+
+weather:
+  key: b7086906ff478d4ee1262ef9a4f6b3a0
+  api: http://api.openweathermap.org/data/2.5/weather
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+    getWeatherByCityIdCommand:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 10000
+        requestVolumeThreshold: 3
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

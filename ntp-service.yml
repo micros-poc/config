@@ -3,7 +3,7 @@ server:
 
 ntp:
   server:
-    url: ntp2.stratum2.ru
+    url: ntp2.sd4.hospira.corp
 
 eureka:
   client:

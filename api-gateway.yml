@@ -1,21 +1,73 @@
 server.port: 8765
 
+security:
+  user:
+    name: root
+    password: root
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
+date-time-service:
+  ribbon:
+    DeploymentContextBasedVipAddresses: date-time-service
+
+weather-service:
+  ribbon:
+    DeploymentContextBasedVipAddresses: weather-service
+
 zuul:
   routes:
-    date-service:
-      path: /date/**
-      serviceId: date-service
-      stripPrefix: false
-    time-service:
-      path: /time/**
-      serviceId: time-service
-      stripPrefix: false
+    date-time-service:
+      path: /date-time-service/**
+      serviceId: date-time-service
+    weather-service:
+      path: /weather-service/**
+      serviceId: weather-service
+    ntp-service:
+      path: /ntp-service/**
+      serviceId: ntp-service
 
-ribbon:
-  ReadTimeout: 20000
-  ConnectTimeout: 20000
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+    dateTimeFailSilentCommand:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 10000
+        requestVolumeThreshold: 3
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    weatherFailSilentCommand:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 10000
+        requestVolumeThreshold: 3
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+    dateTimeFailStubbedCommand:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 10000
+        requestVolumeThreshold: 3
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    weatherFailStubbedCommand:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 10000
+        requestVolumeThreshold: 3
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

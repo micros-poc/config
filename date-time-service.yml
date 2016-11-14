@@ -1,0 +1,67 @@
+server:
+  port: 8882
+
+timeout: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+    getDateTimeByCityIdCommand:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 10000
+        requestVolumeThreshold: 3
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    getDateTimeByLocaleCommand:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 10000
+        requestVolumeThreshold: 3
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+city_info:
+  # Minsk
+  625144:
+    locale: be_BY
+    timezone: GMT+3
+  # London
+  2643743:
+    locale: en_GB
+    timezone: GMT+0
+  # Rome
+  4219762:
+    locale: it_IT
+    timezone: GMT+1
+  # New York
+  5128581:
+    locale: en_US
+    timezone: GMT-4
+  # Tokyo
+  1850147:
+    locale: ja_JP
+    timezone: GMT+9
+  # Beijing
+  1816670:
+    locale: zh_CN
+    timezone: GMT+8
+  # Sydney
+  2147714:
+    locale: en_AU
+    timezone: GMT+11
+  # Buenos Aires
+  3435910:
+    locale: es_AR
+    timezone: GMT-3
