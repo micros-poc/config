@@ -17,7 +17,7 @@ hystrix:
             timeoutInMilliseconds: 60000
     getDateTimeByCityIdCommand:
       circuitBreaker:
-        sleepWindowInMilliseconds: 10000
+        sleepWindowInMilliseconds: 20000
         requestVolumeThreshold: 3
       execution:
         isolation:
@@ -25,7 +25,7 @@ hystrix:
             timeoutInMilliseconds: 2000
     getDateTimeByLocaleCommand:
       circuitBreaker:
-        sleepWindowInMilliseconds: 10000
+        sleepWindowInMilliseconds: 20000
         requestVolumeThreshold: 3
       execution:
         isolation:
