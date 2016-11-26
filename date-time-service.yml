@@ -35,7 +35,7 @@ hystrix:
 city_info:
   # Minsk
   625144:
-    locale: be_BY
+    locale: en_GB
     timezone: GMT+3
   # London
   2643743:
